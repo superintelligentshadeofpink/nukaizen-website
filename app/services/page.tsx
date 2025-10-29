@@ -208,7 +208,7 @@ export default function ServicesPage() {
                 <div className="w-full h-full relative text-left text-[16px] sm:text-[20px] lg:text-[29px] text-black font-['Manrope'] p-4 sm:p-6 lg:p-8">
                   <div className="absolute inset-0 backdrop-blur-[65px] bg-gray-200 rounded-[20px] sm:rounded-[25px] lg:rounded-[30px]" />
                   <div className="relative z-10 font-semibold mb-4 sm:mb-6 lg:mb-8 text-center">IOT + Embedded</div>
-                  <div className="relative z-10 text-sm sm:text-base lg:text-xl leading-[1.6] sm:leading-[1.8] lg:leading-[208%] font-medium">Connect your devices and systems with our IoT and embedded solutions. We design smart sensors, develop firmware, and create connected ecosystems that enable real-time data collection and intelligent automation.</div>
+                  <div className="relative z-10 text-sm sm:text-base lg:text-xl leading-[1.6] sm:leading-[1.8] lg:leading-[208%] font-medium">Connect your devices and systems with our IoT and embedded solutions. We create connected ecosystems that enable real-time data collection and intelligent automation.</div>
                 </div>  
               </div>
             </div>
@@ -497,7 +497,7 @@ export default function ServicesPage() {
                       {isSubmitting ? 'Sending…' : 'Submit'}
                     </button>
                     {submitResult?.ok && (
-                      <span className="text-green-700 font-['Manrope'] text-sm sm:text-base">Thanks! We\'ll be in touch shortly.</span>
+                      <span className="text-green-700 font-['Manrope'] text-sm sm:text-base">Thanks! We'll be in touch shortly.</span>
                     )}
                     {submitResult && !submitResult.ok && (
                       <span className="text-red-600 font-['Manrope'] text-sm sm:text-base">{submitResult.error}</span>

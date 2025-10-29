@@ -585,7 +585,7 @@ export default function HomePage() {
                   {isSubmitting ? 'Sending…' : 'Submit'}
                 </button>
                 {submitResult?.ok && (
-                  <span className="text-green-700 font-['Manrope'] text-sm sm:text-base">Thanks! We\'ll be in touch shortly.</span>
+                  <span className="text-green-700 font-['Manrope'] text-sm sm:text-base">Thanks! We'll be in touch shortly.</span>
                 )}
                 {submitResult && !submitResult.ok && (
                   <span className="text-red-600 font-['Manrope'] text-sm sm:text-base">{submitResult.error}</span>
