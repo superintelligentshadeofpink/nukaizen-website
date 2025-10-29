@@ -7,6 +7,7 @@ import { useRef, useState } from 'react';
 export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const handlePlayClick = () => {
     if (videoRef.current) {
@@ -20,6 +21,35 @@ export default function HomePage() {
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
     }
+  };
+
+  const testimonials = [
+    {
+      image: "/images/corey.png",
+      alt: "Corey Robertson",
+      testimonial: "Mark and Sarah have significant technical expertise in software development and business process improvement. I engaged Nukaizen to review and improve my business processes. Their ability to communicate complex concepts clearly and effectively sets them apart. Highly recommended for anyone wanting to improve their business with seamless collaboration.",
+      name: "Corey Robertson - CEO at BoomA Food Group"
+    },
+    {
+      image: "/images/phil.png",
+      alt: "Phil Couch",
+      testimonial: "Business Process and Software Specialists Mark and Sarah have significant technical expertise in software development and business process improvement. I engaged Nukaizen to review and improve my business processes. Their ability to communicate complex concepts clearly and effectively sets them apart. Highly recommended for anyone wanting to improve their business with seamless collaboration.",
+      name: "Phil Couch - Director, Newcastle Bushfire Consulting"
+    },
+    {
+      image: "/images/viv.png",
+      alt: "Viv Jayachandran",
+      testimonial: "Partnering with Nukaizen has provided Jaegersoft with effective strategies and invaluable support in optimising our project and IT management processes, ensuring we operate more efficiently while maintaining a high standard of service delivery. Sarah's expertise in software consulting, process optimisation, and strategic project oversight has helped us streamline workflows, improve resource visibility, and enhance the scalability of our software team. For any organisation looking to improve the efficiency of their software development operations and scale effectively.",
+      name: "Viv Jayachandran - Managing Director, Jaegersoft"
+    }
+  ];
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   return (
@@ -397,36 +427,62 @@ export default function HomePage() {
 
       {/* Testimonials Section */}
       <section className="relative z-10 container mx-auto px-4 sm:px-6 pt-[120px] sm:pt-[180px] lg:pt-[246px]">
-        <div className="relative w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] lg:w-[160px] lg:h-[160px] rounded-full overflow-hidden mx-auto">
+        <div className="relative w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] lg:w-[160px] lg:h-[160px] rounded-full overflow-hidden mx-auto z-20">
           <img
-            src="/images/customer.png"
-            alt="Corey Robertson"
+            src={testimonials[currentTestimonial].image}
+            alt={testimonials[currentTestimonial].alt}
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="bg-white bg-opacity-30 rounded-[30px] sm:rounded-[40px] lg:rounded-[51px] pt-[100px] sm:pt-[130px] lg:pt-[150px] px-[24px] sm:px-[60px] lg:px-[150px] max-w-[1520px] mx-auto mt-[-60px] sm:mt-[-70px] lg:mt-[-80px] z-[-10] relative min-h-[450px] sm:min-h-[500px] lg:h-[549px]">
-          <div className="max-w-[1000px] mx-auto">
-            <div className="text-center mb-8 lg:mb-12">
+        <div className="bg-white bg-opacity-30 rounded-[30px] sm:rounded-[40px] lg:rounded-[51px] pt-[100px] sm:pt-[130px] lg:pt-[150px] px-[24px] sm:px-[60px] lg:px-[150px] max-w-[1520px] mx-auto mt-[-60px] sm:mt-[-70px] lg:mt-[-80px] z-10 relative min-h-[450px] sm:min-h-[500px] lg:h-[549px]">
+          <div className="max-w-[1000px] mx-auto flex flex-col h-full">
+            <div className="text-center">
               <p className="font-['Manrope'] font-medium text-[14px] sm:text-[16px] lg:text-[18px] text-black leading-[1.6] sm:leading-[1.8] mb-6 lg:mb-8 px-4 sm:px-8 lg:px-12">
-                "Mark and Sarah have significant technical expertise in software development and business process improvement. I engaged Nukaizen to review and improve my business processes. Their ability to communicate complex concepts clearly and effectively sets them apart. Highly recommended for anyone wanting to improve their business with seamless collaboration."
+                "{testimonials[currentTestimonial].testimonial}"
               </p>
               <p className="font-['Manrope'] font-semibold text-[14px] sm:text-[16px] lg:text-[18px] text-black">
-                Corey Robertson - CEO at BoomA Food Group
+                {testimonials[currentTestimonial].name}
               </p>
             </div>
 
-             <div className="flex gap-4 justify-center items-center mt-8 pb-12 lg:mt-12 pt-6 lg:pt-8">
-               <button className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] rounded-full bg-gradient-to-b from-[#c05aff] to-[#4d73f8] flex items-center justify-center hover:opacity-90 transition-all hover:scale-105">
-                 <svg width="16" height="16" className="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                   <path d="m15 18-6-6 6-6"/>
-                 </svg>
-               </button>
-               <button className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] rounded-full bg-gradient-to-b from-[#c05aff] to-[#4d73f8] flex items-center justify-center hover:opacity-90 transition-all hover:scale-105">
-                 <svg width="16" height="16" className="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                   <path d="m9 18 6-6-6-6"/>
-                 </svg>
-               </button>
-             </div>
+            {/* Flexible spacer to keep buttons at a fixed position */}
+            <div className="flex-1" />
+
+            {/* Carousel Navigation */}
+            <div className="flex gap-4 justify-center items-center pb-12 pt-6 lg:pt-8">
+              <button 
+                onClick={prevTestimonial}
+                className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] rounded-full bg-gradient-to-b from-[#c05aff] to-[#4d73f8] flex items-center justify-center hover:opacity-90 transition-all hover:scale-105"
+              >
+                <svg width="16" height="16" className="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m15 18-6-6 6-6"/>
+                </svg>
+              </button>
+              
+              {/* Carousel Indicators */}
+              <div className="flex gap-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-[8px] h-[8px] sm:w-[10px] sm:h-[10px] rounded-full transition-all ${
+                      index === currentTestimonial 
+                        ? 'bg-gradient-to-b from-[#c05aff] to-[#4d73f8]' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                  />
+                ))}
+              </div>
+              
+              <button 
+                onClick={nextTestimonial}
+                className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] rounded-full bg-gradient-to-b from-[#c05aff] to-[#4d73f8] flex items-center justify-center hover:opacity-90 transition-all hover:scale-105"
+              >
+                <svg width="16" height="16" className="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </section>
