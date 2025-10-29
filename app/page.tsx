@@ -614,6 +614,7 @@ export default function HomePage() {
               <span className="text-white font-medium text-base sm:text-lg font-['Manrope']">&copy; Nukaizen</span>
             </div>
 
+            {/*}
             <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
               <a href="#terms" className="font-['Manrope'] font-medium text-sm sm:text-base lg:text-lg text-white hover:underline hover:opacity-80 transition">
                 Terms
@@ -625,9 +626,10 @@ export default function HomePage() {
                 Cookies
               </a>
             </div>
+            */}
 
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/company/nukaizen" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:opacity-80 transition text-white"

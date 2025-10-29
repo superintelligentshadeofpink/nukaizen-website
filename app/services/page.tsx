@@ -58,7 +58,7 @@ export default function ServicesPage() {
                 </Link>
 
                 {/* Navigation */}
-                <nav className="flex gap-8 sm:gap-[40px] lg:gap-[72px] items-center justify-center h-[58px]">
+                <nav className="hidden md:flex gap-8 sm:gap-[40px] lg:gap-[72px] items-center justify-center h-[58px]">
                   <a href="services" className="font-['Manrope'] font-medium text-[14px] sm:text-[16px] text-black">Services</a>
                 </nav>
               </div>
@@ -119,7 +119,7 @@ export default function ServicesPage() {
                 className="object-cover"
               />
               {/* Circular Icon */}
-              <div className="absolute -bottom-[25px] sm:-bottom-[30px] lg:-bottom-[35px] left-1/2 transform -translate-x-1/2 w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] rounded-[10px] sm:rounded-[12px] lg:rounded-[15px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center shadow-lg">
+              <div className="absolute -bottom-[25px] sm:-bottom-[30px] lg:-bottom-[35px] left-1/2 transform -translate-x-1/2 w-[65px] h-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] rounded-[10px] sm:rounded-[12px] lg:rounded-[15px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center shadow-lg">
                 <Bullseye />
               </div>
             </div>
@@ -154,7 +154,7 @@ export default function ServicesPage() {
                 className="object-cover"
               />
               {/* Circular Icon */}
-              <div className="absolute -bottom-[25px] sm:-bottom-[30px] lg:-bottom-[35px] left-1/2 transform -translate-x-1/2 w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] rounded-[10px] sm:rounded-[12px] lg:rounded-[15px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center shadow-lg">
+              <div className="absolute -bottom-[25px] sm:-bottom-[30px] lg:-bottom-[35px] left-1/2 transform -translate-x-1/2 w-[65px] h-[60px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] rounded-[10px] sm:rounded-[12px] lg:rounded-[15px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center shadow-lg">
                 <Bullseye />
               </div>
             </div>
@@ -189,7 +189,7 @@ export default function ServicesPage() {
                 className="object-cover"
               />
               {/* Circular Icon */}
-              <div className="absolute -bottom-[25px] sm:-bottom-[30px] lg:-bottom-[35px] left-1/2 transform -translate-x-1/2 w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] rounded-[10px] sm:rounded-[12px] lg:rounded-[15px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center shadow-lg">
+              <div className="absolute -bottom-[25px] sm:-bottom-[30px] lg:-bottom-[35px] left-1/2 transform -translate-x-1/2 w-[65px] h-[60px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] rounded-[10px] sm:rounded-[12px] lg:rounded-[15px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center shadow-lg">
                 <Bullseye />
               </div>
             </div>
@@ -224,7 +224,7 @@ export default function ServicesPage() {
                 className="object-cover"
               />
               {/* Circular Icon */}
-              <div className="absolute -bottom-[25px] sm:-bottom-[30px] lg:-bottom-[35px] left-1/2 transform -translate-x-1/2 w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] rounded-[10px] sm:rounded-[12px] lg:rounded-[15px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center shadow-lg">
+              <div className="absolute -bottom-[25px] sm:-bottom-[30px] lg:-bottom-[35px] left-1/2 transform -translate-x-1/2 w-[65px] h-[60px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] rounded-[10px] sm:rounded-[12px] lg:rounded-[15px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center shadow-lg">
                 <Bullseye />
               </div>
             </div>
@@ -259,7 +259,7 @@ export default function ServicesPage() {
                 className="object-cover"
               />
               {/* Circular Icon */}
-              <div className="absolute -bottom-[25px] sm:-bottom-[30px] lg:-bottom-[35px] left-1/2 transform -translate-x-1/2 w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] rounded-[10px] sm:rounded-[12px] lg:rounded-[15px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center shadow-lg">
+              <div className="absolute -bottom-[25px] sm:-bottom-[30px] lg:-bottom-[35px] left-1/2 transform -translate-x-1/2 w-[65px] h-[60px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] rounded-[10px] sm:rounded-[12px] lg:rounded-[15px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center shadow-lg">
                 <Bullseye />
               </div>
             </div>
@@ -294,7 +294,7 @@ export default function ServicesPage() {
                 className="object-cover"
               />
               {/* Circular Icon */}
-              <div className="absolute -bottom-[25px] sm:-bottom-[30px] lg:-bottom-[35px] left-1/2 transform -translate-x-1/2 w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] rounded-[10px] sm:rounded-[12px] lg:rounded-[15px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center shadow-lg">
+              <div className="absolute -bottom-[25px] sm:-bottom-[30px] lg:-bottom-[35px] left-1/2 transform -translate-x-1/2 w-[65px] h-[60px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px] rounded-[10px] sm:rounded-[12px] lg:rounded-[15px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center shadow-lg">
                 <Bullseye />
               </div>
             </div>
@@ -526,6 +526,7 @@ export default function ServicesPage() {
               <span className="text-white font-medium text-base sm:text-lg font-['Manrope']">&copy; Nukaizen</span>
             </div>
 
+           {/*}
             <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
               <a href="#terms" className="font-['Manrope'] font-medium text-sm sm:text-base lg:text-lg text-white hover:underline hover:opacity-80 transition">
                 Terms
@@ -537,9 +538,10 @@ export default function ServicesPage() {
                 Cookies
               </a>
             </div>
+            */}
 
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/company/nukaizen" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:opacity-80 transition text-white"
