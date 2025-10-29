@@ -78,7 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
           backgroundPosition: 'center top -200px',
           backgroundRepeat: 'repeat-y',
           backgroundAttachment: 'fixed',
-          backgroundColor: '#dcf1fd'
+          backgroundColor: '#dcf1fd',
         }}
       >
         {children}
