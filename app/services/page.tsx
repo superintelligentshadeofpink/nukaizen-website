@@ -7,6 +7,11 @@ import { useState } from 'react';
 
 export default function ServicesPage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [contactName, setContactName] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [contactMessage, setContactMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState<null | { ok: boolean; error?: string }>(null);
 
   const testimonials = [
     {
@@ -72,7 +77,18 @@ export default function ServicesPage() {
             </p>
             
             <p className="font-['Manrope'] font-medium text-[16px] sm:text-[18px] lg:text-[20px] text-black leading-[1.6] sm:leading-[1.7] mt-[20px] sm:mt-[30px] lg:mt-[40px]">
-              To find out more about how we can help you please fill out the Contact Us form below and we will be in touch to arrange an introductory meeting.
+              To find out more about how we can help you please fill out the{' '}
+              <a 
+                href="#contact" 
+                className="text-[#c05aff] hover:text-[#4d73f8] underline hover:no-underline transition-colors duration-200 cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Contact Us
+              </a>
+              {' '}form below and we will be in touch to arrange an introductory meeting.
             </p>
           </div>
 
@@ -420,29 +436,74 @@ export default function ServicesPage() {
                   Please send us your details and we will be in touch shortly.
                 </p>
 
-                <div className="space-y-4 sm:space-y-6">
+                <form
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    setIsSubmitting(true);
+                    setSubmitResult(null);
+                    try {
+                      const res = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name: contactName, email: contactEmail, message: contactMessage }),
+                      });
+                      if (res.ok) {
+                        setSubmitResult({ ok: true });
+                        setContactName('');
+                        setContactEmail('');
+                        setContactMessage('');
+                      } else {
+                        const data = await res.json().catch(() => ({}));
+                        setSubmitResult({ ok: false, error: data?.error || 'Failed to send message' });
+                      }
+                    } catch (err) {
+                      setSubmitResult({ ok: false, error: 'Network error' });
+                    } finally {
+                      setIsSubmitting(false);
+                    }
+                  }}
+                  className="space-y-4 sm:space-y-6"
+                >
                   <input
                     type="text"
                     placeholder="Name"
+                    value={contactName}
+                    onChange={(e) => setContactName(e.target.value)}
+                    required
                     className="w-full px-[16px] py-[14px] sm:py-[16px] border-[1.5px] border-[#c05aff] rounded-[10px] bg-transparent font-['Manrope'] font-medium text-[16px] sm:text-[18px] text-black placeholder:text-[#6b7083] focus:outline-none focus:ring-2 focus:ring-[#c05aff] focus:border-transparent transition"
                   />
                   <input
                     type="email"
                     placeholder="Email"
+                    value={contactEmail}
+                    onChange={(e) => setContactEmail(e.target.value)}
+                    required
                     className="w-full px-[16px] py-[14px] sm:py-[16px] border-[1.5px] border-[#c05aff] rounded-[10px] bg-transparent font-['Manrope'] font-medium text-[16px] sm:text-[18px] text-black placeholder:text-[#6b7083] focus:outline-none focus:ring-2 focus:ring-[#c05aff] focus:border-transparent transition"
                   />
                   <textarea
                     placeholder="Message"
                     rows={6}
+                    value={contactMessage}
+                    onChange={(e) => setContactMessage(e.target.value)}
+                    required
                     className="w-full px-[16px] py-[14px] sm:py-[16px] border-[1.5px] border-[#c05aff] rounded-[10px] bg-transparent font-['Manrope'] font-medium text-[16px] sm:text-[18px] text-black placeholder:text-[#6b7083] focus:outline-none focus:ring-2 focus:ring-[#c05aff] focus:border-transparent resize-none transition min-h-[180px] sm:h-[210px]"
                   />
-                  <button
-                    onClick={() => alert('Form submitted! In production, this would send an email.')}
-                    className="bg-gradient-to-b from-[#c05aff] to-[#4d73f8] text-white px-[24px] sm:px-[26px] py-[14px] sm:py-[16px] rounded-[10px] font-['Manrope'] font-semibold text-[16px] sm:text-[18px] hover:opacity-90 hover:shadow-lg transform hover:scale-[1.02] transition-all cursor-pointer w-full sm:w-auto"
-                  >
-                    Submit
-                  </button>
-                </div>
+                  <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="bg-gradient-to-b from-[#c05aff] to-[#4d73f8] text-white px-[24px] sm:px-[26px] py-[14px] sm:py-[16px] rounded-[10px] font-['Manrope'] font-semibold text-[16px] sm:text-[18px] hover:opacity-90 hover:shadow-lg transform hover:scale-[1.02] transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed w-full sm:w-auto"
+                    >
+                      {isSubmitting ? 'Sending…' : 'Submit'}
+                    </button>
+                    {submitResult?.ok && (
+                      <span className="text-green-700 font-['Manrope'] text-sm sm:text-base">Thanks! We\'ll be in touch shortly.</span>
+                    )}
+                    {submitResult && !submitResult.ok && (
+                      <span className="text-red-600 font-['Manrope'] text-sm sm:text-base">{submitResult.error}</span>
+                    )}
+                  </div>
+                </form>
               </div>
 
               <div className="relative h-[300px] sm:h-[400px] lg:h-[653px] rounded-[30px] overflow-hidden shadow-2xl">

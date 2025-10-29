@@ -8,6 +8,11 @@ export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [contactName, setContactName] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [contactMessage, setContactMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState<null | { ok: boolean; error?: string }>(null);
 
   const handlePlayClick = () => {
     if (videoRef.current) {
@@ -101,7 +106,7 @@ export default function HomePage() {
             </div>
 
             {/* Feature Cards */}
-            <div className="absolute top-[40px] left-[20px] sm:left-[-150px] lg:left-[-203px] bg-white bg-opacity-30 backdrop-blur-[32px] rounded-[19px] p-[24px] sm:p-[30px] lg:p-[38px] w-[calc(100%-40px)] max-w-[367px]">
+            <div className="absolute top-[40px] left-[20px] sm:left-[-150px] lg:left-[-203px] bg-white bg-opacity-30 backdrop-blur-[32px] rounded-[19px] p-[24px] sm:p-[30px] lg:p-[38px] w-[calc(100%-40px)] max-w-[367px] glide-down">
               <div className="flex items-center justify-between">
                 <h3 className="font-['Manrope'] font-bold text-[24px] leading-[30px] text-black uppercase mb-4">
                   MORE THAN IT SERVICES
@@ -118,7 +123,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="absolute top-[250px] sm:top-[410px] left-[20px] sm:left-[-350px] lg:left-[-390px] bg-white bg-opacity-30 rounded-[35px] p-[24px] sm:p-[30px] lg:p-[38px] w-[calc(100%-40px)] max-w-[367px]">
+            <div className="absolute top-[250px] sm:top-[410px] left-[20px] sm:left-[-350px] lg:left-[-390px] bg-white bg-opacity-30 rounded-[35px] p-[24px] sm:p-[30px] lg:p-[38px] w-[calc(100%-40px)] max-w-[367px] glide-right">
             <div className="flex items-center justify-between">
             <h3 className="font-['Manrope'] font-bold text-[24px] leading-[30px] text-black uppercase mb-4">
                   YOUR ONE-STOP TECH PROVIDER
@@ -135,23 +140,23 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="hidden md:block absolute top-[560px] sm:top-[695px] left-[20px] sm:left-[-350px] lg:left-[-390px] bg-white bg-opacity-30 rounded-[35px] p-[24px] sm:p-[30px] lg:p-[38px] w-[calc(100%-40px)] max-w-[367px]">
-            <div className="flex items-center justify-between">
-              <h3 className="font-['Manrope'] font-bold text-[24px] leading-[30px] text-black uppercase mb-4">
-                KEEP UP WITH<br/>NEW INNOVATION
-              </h3>
-              <div className="w-[47px] h-[47px] rounded-[12px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center mb-4 mt-[-10px]">
-                <svg width="47" height="47" viewBox="0 0 24 24" fill="none" stroke="white" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="6" strokeWidth="1"/>
-                  <circle cx="12" cy="12" r="3" strokeWidth="3"/>
-                </svg>
+            <div className="hidden md:block absolute top-[560px] sm:top-[695px] left-[20px] sm:left-[-350px] lg:left-[-390px] bg-white bg-opacity-30 rounded-[35px] p-[24px] sm:p-[30px] lg:p-[38px] w-[calc(100%-40px)] max-w-[367px] glide-right">
+              <div className="flex items-center justify-between">
+                <h3 className="font-['Manrope'] font-bold text-[24px] leading-[30px] text-black uppercase mb-4">
+                  KEEP UP WITH<br/>NEW INNOVATION
+                </h3>
+                <div className="w-[47px] h-[47px] rounded-[12px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] flex items-center justify-center mb-4 mt-[-10px]">
+                  <svg width="47" height="47" viewBox="0 0 24 24" fill="none" stroke="white" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="6" strokeWidth="1"/>
+                    <circle cx="12" cy="12" r="3" strokeWidth="3"/>
+                  </svg>
+                </div>
+              </div>
+                <p className="font-['Manrope'] font-medium text-[16px] text-black/70 leading-[1.661] mb-4">
+                  Making cutting-edge technology accessible for all businesses.
+                </p>
               </div>
             </div>
-              <p className="font-['Manrope'] font-medium text-[16px] text-black/70 leading-[1.661] mb-4">
-                Making cutting-edge technology accessible for all businesses.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -191,7 +196,13 @@ export default function HomePage() {
                 <h3 className="font-['Manrope'] font-bold text-[32px] sm:text-[38px] lg:text-[42px] text-black mb-[12px] sm:mb-[15px]">50+ years</h3>
                 <p className="font-['Manrope'] font-semibold text-[18px] sm:text-[20px] lg:text-[22px] text-black mb-[20px] sm:mb-[30px]">Combined experience</p>
               </div>
-              <button className="bg-gradient-to-b from-[#c05aff] to-[#4d73f8] text-white px-6 sm:px-8 py-3 rounded-full font-['Manrope'] font-semibold text-[14px] sm:text-[16px] flex items-center justify-center gap-2 hover:opacity-90 transition w-full sm:w-auto">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-gradient-to-b from-[#c05aff] to-[#4d73f8] text-white px-6 sm:px-8 py-3 rounded-full font-['Manrope'] font-semibold text-[14px] sm:text-[16px] flex items-center justify-center gap-2 hover:opacity-90 transition w-full sm:w-auto"
+              >
                 Reach Out
                 <svg width="20" height="20" className="sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m9 18 6-6-6-6"/>
@@ -257,27 +268,32 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="backdrop-blur-[32px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] w-full sm:w-[calc(50%-12px)] lg:w-[345px] rounded-[19px] pt-[34px] px-[24px] pb-[24px] sm:p-[30px] lg:p-[35px] sm:pr-[30px]">
-              <div className="flex items-center justify-between">
-                <h4 className="font-['Manrope'] font-bold text-[36px] sm:text-[44px] lg:text-[54px] text-white">
-                   TRY US
-                </h4>
-                <div className="w-[36px] h-[36px] sm:w-[47px] sm:h-[47px] rounded-[12px] bg-[#6b7083] flex items-center justify-center mb-4 mt-[-30px]">     
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <mask id="mask0_5_121" style={{maskType: 'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="35" height="35">
-                  <rect width="34.4542" height="34.4542" fill="#D9D9D9"/>
-                  </mask>
-                  <g mask="url(#mask0_5_121)">
-                  <path d="M15.33 2C16.5262 2 17.5429 2.41869 18.3802 3.25606C19.2175 4.09344 19.6362 5.11025 19.6362 6.3065C19.6362 7.50275 19.2175 8.51956 18.3802 9.35694C17.5429 10.1943 16.5262 10.613 15.33 10.613C14.1338 10.613 13.1171 10.1943 12.2798 9.35694C11.4425 8.51956 11.0238 7.50275 11.0238 6.3065C11.0238 5.11025 11.4425 4.09344 12.2798 3.25606C13.1171 2.41869 14.1338 2 15.33 2ZM15.33 12.0485C16.4544 12.0485 17.5668 12.1801 18.6673 12.4433C19.7677 12.7064 20.7605 13.0773 21.6457 13.5558C22.5548 14.0103 23.2844 14.5487 23.8347 15.1707C24.3849 15.7928 24.66 16.4746 24.66 17.2163V25.5422C24.66 25.9489 24.5643 26.3497 24.3729 26.7444C24.1815 27.1392 23.9184 27.504 23.5835 27.839C23.2485 28.1739 22.8598 28.485 22.4172 28.7721C21.9746 29.0592 21.4782 29.3223 20.928 29.5616V26.3317C20.928 25.4226 20.3 24.6809 19.0441 24.1067C17.7881 23.5325 16.5501 23.2454 15.33 23.2454C14.1338 23.2454 12.9796 23.4906 11.8671 23.9811C10.7547 24.4716 10.0669 25.1115 9.80377 25.9011C10.7128 26.2599 11.6458 26.5112 12.6028 26.6547C13.5597 26.7983 14.5405 26.882 15.5453 26.9059H16.7654V30.6382C16.5979 30.6861 16.4245 30.71 16.2451 30.71H15.6888C14.8276 30.71 13.8408 30.6143 12.7284 30.4229C11.6159 30.2315 10.5573 29.9324 9.55258 29.5257C8.54781 29.119 7.70452 28.5867 7.02271 27.9287C6.3409 27.2708 6 26.4753 6 25.5422V17.2163C6 16.4746 6.27512 15.7928 6.82535 15.1707C7.37558 14.5487 8.09327 14.0103 8.97842 13.5558C9.8875 13.0773 10.8923 12.7064 11.9927 12.4433C13.0932 12.1801 14.2056 12.0485 15.33 12.0485ZM15.33 20.6615C16.1195 20.6615 16.7953 20.3804 17.3575 19.8181C17.9197 19.2559 18.2008 18.58 18.2008 17.7905C18.2008 17.001 17.9197 16.3251 17.3575 15.7629C16.7953 15.2006 16.1195 14.9195 15.33 14.9195C14.5405 14.9195 13.8647 15.2006 13.3025 15.7629C12.7403 16.3251 12.4592 17.001 12.4592 17.7905C12.4592 18.58 12.7403 19.2559 13.3025 19.8181C13.8647 20.3804 14.5405 20.6615 15.33 20.6615Z" fill="white"/>
-                  </g>
-                </svg>
-                </div>
-                </div>
+              <a
+                href="https://architecture.nukaizen.com.au"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="backdrop-blur-[32px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] w-full sm:w-[calc(50%-12px)] lg:w-[345px] rounded-[19px] pt-[34px] px-[24px] pb-[24px] sm:p-[30px] lg:p-[35px] sm:pr-[30px] block hover:opacity-95 transition"
+              >
+                <div className="flex items-center justify-between">
+                  <h4 className="font-['Manrope'] font-bold text-[36px] sm:text-[44px] lg:text-[54px] text-white">
+                    TRY US
+                  </h4>
+                  <div className="w-[36px] h-[36px] sm:w-[47px] sm:h-[47px] rounded-[12px] bg-[#6b7083] flex items-center justify-center mb-4 mt-[-30px]">     
+                  <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="mask0_5_121" style={{maskType: 'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="35" height="35">
+                    <rect width="34.4542" height="34.4542" fill="#D9D9D9"/>
+                    </mask>
+                    <g mask="url(#mask0_5_121)">
+                    <path d="M15.33 2C16.5262 2 17.5429 2.41869 18.3802 3.25606C19.2175 4.09344 19.6362 5.11025 19.6362 6.3065C19.6362 7.50275 19.2175 8.51956 18.3802 9.35694C17.5429 10.1943 16.5262 10.613 15.33 10.613C14.1338 10.613 13.1171 10.1943 12.2798 9.35694C11.4425 8.51956 11.0238 7.50275 11.0238 6.3065C11.0238 5.11025 11.4425 4.09344 12.2798 3.25606C13.1171 2.41869 14.1338 2 15.33 2ZM15.33 12.0485C16.4544 12.0485 17.5668 12.1801 18.6673 12.4433C19.7677 12.7064 20.7605 13.0773 21.6457 13.5558C22.5548 14.0103 23.2844 14.5487 23.8347 15.1707C24.3849 15.7928 24.66 16.4746 24.66 17.2163V25.5422C24.66 25.9489 24.5643 26.3497 24.3729 26.7444C24.1815 27.1392 23.9184 27.504 23.5835 27.839C23.2485 28.1739 22.8598 28.485 22.4172 28.7721C21.9746 29.0592 21.4782 29.3223 20.928 29.5616V26.3317C20.928 25.4226 20.3 24.6809 19.0441 24.1067C17.7881 23.5325 16.5501 23.2454 15.33 23.2454C14.1338 23.2454 12.9796 23.4906 11.8671 23.9811C10.7547 24.4716 10.0669 25.1115 9.80377 25.9011C10.7128 26.2599 11.6458 26.5112 12.6028 26.6547C13.5597 26.7983 14.5405 26.882 15.5453 26.9059H16.7654V30.6382C16.5979 30.6861 16.4245 30.71 16.2451 30.71H15.6888C14.8276 30.71 13.8408 30.6143 12.7284 30.4229C11.6159 30.2315 10.5573 29.9324 9.55258 29.5257C8.54781 29.119 7.70452 28.5867 7.02271 27.9287C6.3409 27.2708 6 26.4753 6 25.5422V17.2163C6 16.4746 6.27512 15.7928 6.82535 15.1707C7.37558 14.5487 8.09327 14.0103 8.97842 13.5558C9.8875 13.0773 10.8923 12.7064 11.9927 12.4433C13.0932 12.1801 14.2056 12.0485 15.33 12.0485ZM15.33 20.6615C16.1195 20.6615 16.7953 20.3804 17.3575 19.8181C17.9197 19.2559 18.2008 18.58 18.2008 17.7905C18.2008 17.001 17.9197 16.3251 17.3575 15.7629C16.7953 15.2006 16.1195 14.9195 15.33 14.9195C14.5405 14.9195 13.8647 15.2006 13.3025 15.7629C12.7403 16.3251 12.4592 17.001 12.4592 17.7905C12.4592 18.58 12.7403 19.2559 13.3025 19.8181C13.8647 20.3804 14.5405 20.6615 15.33 20.6615Z" fill="white"/>
+                    </g>
+                  </svg>
+                  </div>
+                  </div>
                 <p className="font-['Manrope'] font-semibold text-[22px] text-white">
                   Get your free AI consultation
                 </p>
+              </a>
               </div>
-            </div>
           </div>
         </div>
       </section>
@@ -335,7 +351,13 @@ export default function HomePage() {
                   </svg>
                 </div>
               </a>
-              <button className="border-2 border-[#c05aff] px-6 sm:px-8 py-3 rounded-full font-['Manrope'] font-semibold text-[15px] sm:text-[17px] bg-gradient-to-b from-[#c05aff] to-[#4d73f8] bg-clip-text text-transparent hover:bg-white/10 transition">
+              <button 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="border-2 border-[#c05aff] px-6 sm:px-8 py-3 rounded-full font-['Manrope'] font-semibold text-[15px] sm:text-[17px] bg-gradient-to-b from-[#c05aff] to-[#4d73f8] bg-clip-text text-transparent hover:bg-white/10 transition"
+              >
                 Contact Us
               </button>
             </div>
@@ -502,29 +524,74 @@ export default function HomePage() {
                   Please send us your details and we will be in touch shortly.
                 </p>
 
-                <div className="space-y-4 sm:space-y-6">
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    className="w-full px-[16px] py-[14px] sm:py-[16px] border-[1.5px] border-[#c05aff] rounded-[10px] bg-transparent font-['Manrope'] font-medium text-[16px] sm:text-[18px] text-black placeholder:text-[#6b7083] focus:outline-none focus:ring-2 focus:ring-[#c05aff] focus:border-transparent transition"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    className="w-full px-[16px] py-[14px] sm:py-[16px] border-[1.5px] border-[#c05aff] rounded-[10px] bg-transparent font-['Manrope'] font-medium text-[16px] sm:text-[18px] text-black placeholder:text-[#6b7083] focus:outline-none focus:ring-2 focus:ring-[#c05aff] focus:border-transparent transition"
-                  />
-                  <textarea
-                    placeholder="Message"
-                    rows={6}
-                    className="w-full px-[16px] py-[14px] sm:py-[16px] border-[1.5px] border-[#c05aff] rounded-[10px] bg-transparent font-['Manrope'] font-medium text-[16px] sm:text-[18px] text-black placeholder:text-[#6b7083] focus:outline-none focus:ring-2 focus:ring-[#c05aff] focus:border-transparent resize-none transition min-h-[180px] sm:h-[210px]"
-                  />
-                  <button
-                    onClick={() => alert('Form submitted! In production, this would send an email.')}
-                    className="bg-gradient-to-b from-[#c05aff] to-[#4d73f8] text-white px-[24px] sm:px-[26px] py-[14px] sm:py-[16px] rounded-[10px] font-['Manrope'] font-semibold text-[16px] sm:text-[18px] hover:opacity-90 hover:shadow-lg transform hover:scale-[1.02] transition-all cursor-pointer w-full sm:w-auto"
-                  >
-                    Submit
-                  </button>
-                </div>
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setIsSubmitting(true);
+                setSubmitResult(null);
+                try {
+                  const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: contactName, email: contactEmail, message: contactMessage }),
+                  });
+                  if (res.ok) {
+                    setSubmitResult({ ok: true });
+                    setContactName('');
+                    setContactEmail('');
+                    setContactMessage('');
+                  } else {
+                    const data = await res.json().catch(() => ({}));
+                    setSubmitResult({ ok: false, error: data?.error || 'Failed to send message' });
+                  }
+                } catch (err) {
+                  setSubmitResult({ ok: false, error: 'Network error' });
+                } finally {
+                  setIsSubmitting(false);
+                }
+              }}
+              className="space-y-4 sm:space-y-6"
+            >
+              <input
+                type="text"
+                placeholder="Name"
+                value={contactName}
+                onChange={(e) => setContactName(e.target.value)}
+                required
+                className="w-full px-[16px] py-[14px] sm:py-[16px] border-[1.5px] border-[#c05aff] rounded-[10px] bg-transparent font-['Manrope'] font-medium text-[16px] sm:text-[18px] text-black placeholder:text-[#6b7083] focus:outline-none focus:ring-2 focus:ring-[#c05aff] focus:border-transparent transition"
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                value={contactEmail}
+                onChange={(e) => setContactEmail(e.target.value)}
+                required
+                className="w-full px-[16px] py-[14px] sm:py-[16px] border-[1.5px] border-[#c05aff] rounded-[10px] bg-transparent font-['Manrope'] font-medium text-[16px] sm:text-[18px] text-black placeholder:text-[#6b7083] focus:outline-none focus:ring-2 focus:ring-[#c05aff] focus:border-transparent transition"
+              />
+              <textarea
+                placeholder="Message"
+                rows={6}
+                value={contactMessage}
+                onChange={(e) => setContactMessage(e.target.value)}
+                required
+                className="w-full px-[16px] py-[14px] sm:py-[16px] border-[1.5px] border-[#c05aff] rounded-[10px] bg-transparent font-['Manrope'] font-medium text-[16px] sm:text-[18px] text-black placeholder:text-[#6b7083] focus:outline-none focus:ring-2 focus:ring-[#c05aff] focus:border-transparent resize-none transition min-h-[180px] sm:h-[210px]"
+              />
+              <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-gradient-to-b from-[#c05aff] to-[#4d73f8] text-white px-[24px] sm:px-[26px] py-[14px] sm:py-[16px] rounded-[10px] font-['Manrope'] font-semibold text-[16px] sm:text-[18px] hover:opacity-90 hover:shadow-lg transform hover:scale-[1.02] transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed w-full sm:w-auto"
+                >
+                  {isSubmitting ? 'Sending…' : 'Submit'}
+                </button>
+                {submitResult?.ok && (
+                  <span className="text-green-700 font-['Manrope'] text-sm sm:text-base">Thanks! We\'ll be in touch shortly.</span>
+                )}
+                {submitResult && !submitResult.ok && (
+                  <span className="text-red-600 font-['Manrope'] text-sm sm:text-base">{submitResult.error}</span>
+                )}
+              </div>
+            </form>
               </div>
 
               <div className="relative h-[300px] sm:h-[400px] lg:h-[653px] rounded-[30px] overflow-hidden shadow-2xl">
