@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Bullseye from '../components/Bullseye';
 import { useRef, useState } from 'react';
+import Link from 'next/link';
 
 export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -73,8 +74,9 @@ export default function HomePage() {
                 </h1>
 
                 {/* Navigation */}
-                <nav className="flex gap-8 sm:gap-[40px] lg:gap-[72px] items-center justify-center h-[58px]">
-                  <a href="services" className="font-['Manrope'] font-medium text-[14px] sm:text-[16px] text-black">Services</a>
+                <nav className="hidden md:flex gap-8 sm:gap-[40px] lg:gap-[72px] items-center justify-center h-[58px]">
+                  <Link href="/services" className="font-['Manrope'] font-medium text-[14px] sm:text-[16px] text-black">Services</Link>
+                  <Link href="/case-studies" className="font-['Manrope'] font-medium text-[14px] sm:text-[16px] text-black">Case Studies</Link>
                 </nav>
               </div>
             </header>

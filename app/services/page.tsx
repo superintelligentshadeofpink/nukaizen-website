@@ -45,7 +45,7 @@ export default function ServicesPage() {
     <div className="relative min-h-screen w-full overflow-hidden">
 
       {/* Services Hero Section */}
-      <section className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 xl:px-[200px] max-w-[1920px] pb-[60px] sm:pb-[80px] lg:pb-[120px] mt-[60px] sm:mt-[80px] lg:mt-[120px]">
+      <section className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 xl:px-[200px] max-w-[1920px] pb-[60px] sm:pb-[80px] lg:pb-[120px] pt-[30px] sm:pt-[50px]">
         <div className="flex flex-col lg:flex-row align-start gap-8 lg:gap-16 justify-between">
           {/* Left Column - Text Content */}
           <div className="w-full lg:w-[736px]">
@@ -59,7 +59,8 @@ export default function ServicesPage() {
 
                 {/* Navigation */}
                 <nav className="hidden md:flex gap-8 sm:gap-[40px] lg:gap-[72px] items-center justify-center h-[58px]">
-                  <a href="services" className="font-['Manrope'] font-medium text-[14px] sm:text-[16px] text-black">Services</a>
+                  <Link href="/services" className="font-['Manrope'] font-medium text-[14px] sm:text-[16px] text-black">Services</Link>
+                  <Link href="/case-studies" className="font-['Manrope'] font-medium text-[14px] sm:text-[16px] text-black">Case Studies</Link>
                 </nav>
               </div>
             </header>
