@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Bullseye from '../components/Bullseye';
+import Header from '@/components/Header';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 
@@ -65,21 +66,7 @@ export default function HomePage() {
       <section className="relative z-10 max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 pt-[30px] sm:pt-[50px]">
         <div className="flex flex-col lg:flex-row justify-between">
           <div className="w-full lg:w-[851px]">
-            {/* Header Section */}
-            <header className="relative z-10">
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-[50px] lg:gap-[100px] items-center sm:items-start">
-                {/* Logo */}
-                <h1 className="font-['Outfit'] font-medium text-[28px] sm:text-[32px] lg:text-[36px] text-black">
-                  Nuk<span className="text-[#950aff]">ai</span>zen
-                </h1>
-
-                {/* Navigation */}
-                <nav className="hidden md:flex gap-8 sm:gap-[40px] lg:gap-[72px] items-center justify-center h-[58px]">
-                  <Link href="/services" className="font-['Manrope'] font-medium text-[14px] sm:text-[16px] text-black">Services</Link>
-                  <Link href="/case-studies" className="font-['Manrope'] font-medium text-[14px] sm:text-[16px] text-black">Case Studies</Link>
-                </nav>
-              </div>
-            </header>
+            <Header isHome />
 
             <h2 className="font-['Outfit'] font-medium text-[40px] sm:text-[50px] lg:text-[80px] leading-[50px] sm:leading-[60px] lg:leading-[90px] mt-[30px] sm:mt-[50px] lg:mt-[70px] tracking-[-1px] sm:tracking-[-2px] lg:tracking-[-2.35px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] bg-clip-text text-transparent text-center lg:text-left">
               The experienced tech team that understands

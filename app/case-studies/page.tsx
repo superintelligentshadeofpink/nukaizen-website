@@ -1,8 +1,9 @@
 'use client';
 
+import Header from '@/components/Header';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import Image from 'next/image';
 
 export default function CaseStudiesPage() {
   const [contactName, setContactName] = useState('');
@@ -20,21 +21,7 @@ export default function CaseStudiesPage() {
           {/* Left Column - Text Content */}
           <div className="w-full lg:w-[736px]">
 
-                {/* Header Section */}
-                <header className="relative z-10 mb-[40px] sm:mb-[60px] lg:mb-[80px]">
-                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-[50px] lg:gap-[100px] items-center sm:items-start">
-                        {/* Logo */}
-                        <Link href="/" className="font-['Outfit'] font-medium text-[24px] sm:text-[28px] lg:text-[32px] xl:text-[36px] text-black hover:opacity-80 transition">
-                        Nuk<span className="text-[#950aff]">ai</span>zen
-                        </Link>
-
-                        {/* Navigation */}
-                        <nav className="hidden md:flex gap-8 sm:gap-[40px] lg:gap-[72px] items-center justify-center h-[58px]">
-                        <Link href="/services" className="font-['Manrope'] font-medium text-[14px] sm:text-[16px] text-black">Services</Link>
-                        <Link href="/case-studies" className="font-['Manrope'] font-medium text-[14px] sm:text-[16px] text-black">Case Studies</Link>
-                        </nav>
-                    </div>
-                </header>
+                <Header className="mb-[40px] sm:mb-[60px] lg:mb-[80px]" />
 
                 <h2 className="font-['outfit'] font-medium text-[40px] sm:text-[50px] lg:text-[60px] xl:text-[80px] leading-[1.1] sm:leading-[1.1] lg:leading-[1.1] xl:leading-[90px] tracking-[-1px] sm:tracking-[-1.5px] lg:tracking-[-2px] xl:tracking-[-2.35px] bg-gradient-to-r from-[#c05aff] to-[#4d73f8] bg-clip-text text-transparent mb-[40px] sm:mb-[60px] lg:mb-[80px]">
                     Adios: End-of-Life Planning Platform
