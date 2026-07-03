@@ -1,4 +1,8 @@
 import './globals.css'
+import AmbientBackground from '@/components/AmbientBackground'
+import ScrollProgress from '@/components/ScrollProgress'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'Nukaizen | Enterprise IT Solutions for Small Businesses',
@@ -20,7 +24,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg', // Add your Open Graph image
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Nukaizen - Your Complete IT Solution Provider',
@@ -31,7 +35,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Nukaizen | Enterprise IT Solutions',
     description: 'Expert IT consulting and development services',
-    images: ['/og-image.jpg'], // Add your Twitter card image
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,
@@ -53,35 +57,12 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <html lang="en">
-      <head>
-        {/* Google Fonts are loaded in globals.css */}
-        {/* Add Google Analytics here when ready */}
-        {/* Example:
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=YOUR-GA-ID`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'YOUR-GA-ID');
-          `}
-        </Script>
-        */}
-      </head>
-      <body 
-        className="antialiased"
-        style={{
-          backgroundImage: 'url("/images/background.png")',
-          backgroundPosition: 'center top -200px',
-          backgroundRepeat: 'repeat-y',
-          backgroundAttachment: 'fixed',
-          backgroundColor: '#dcf1fd',
-        }}
-      >
-        {children}
+      <body className="antialiased">
+        <AmbientBackground />
+        <ScrollProgress />
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )
